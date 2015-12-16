@@ -6,7 +6,7 @@ package com.imallan.quickaction;
  */
 public interface QuickActionView {
 
-    void prepare();
+    void prepare(Object tag);
 
     void show();
 

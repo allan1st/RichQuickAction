@@ -29,7 +29,7 @@ public abstract class RichActionHolder implements QuickActionListener {
     }
 
     @Override
-    public void onViewPrepare(FrameLayout container) {
+    public void onViewPrepare(FrameLayout container, Object tag) {
         mRichActionView.clearActions();
         if (mActions != null) {
             for (Action action : mActions) {

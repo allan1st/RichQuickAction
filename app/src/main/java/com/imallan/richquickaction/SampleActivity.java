@@ -71,8 +71,14 @@ public class SampleActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onViewPrepare(FrameLayout container) {
-            super.onViewPrepare(container);
+        public void bindRichActionView(View view, RichActionView richActionView) {
+            view.setTag(mUrl);
+            super.bindRichActionView(view, richActionView);
+        }
+
+        @Override
+        public void onViewPrepare(FrameLayout container, final Object tag) {
+            super.onViewPrepare(container, tag);
             container.removeAllViews();
             container.addView(mImageView,
                     FrameLayout.LayoutParams.MATCH_PARENT,
@@ -82,7 +88,7 @@ public class SampleActivity extends AppCompatActivity {
                     new Runnable() {
                         @Override
                         public void run() {
-                            Glide.with(mImageView.getContext()).load(mUrl).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL)
+                            Glide.with(mImageView.getContext()).load((String) tag).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .dontAnimate()
                                     .into(mImageView);
                         }

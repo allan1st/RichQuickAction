@@ -76,9 +76,9 @@ public class RichActionView extends FrameLayout implements QuickActionView {
         setAlpha(0F);
     }
 
-    public void prepare() {
+    public void prepare(Object tag) {
         if (mQuickActionListener != null) {
-            mQuickActionListener.onViewPrepare(mFrameLayoutCustomContent);
+            mQuickActionListener.onViewPrepare(mFrameLayoutCustomContent, tag);
         }
     }
 

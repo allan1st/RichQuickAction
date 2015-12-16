@@ -17,11 +17,13 @@ public class QuickActionOnTouchListener implements View.OnTouchListener {
 
     private View mView;
 
+    private Object mTag;
+
     GestureDetector.OnGestureListener mOnGestureListener = new GestureDetector.OnGestureListener() {
 
         @Override
         public boolean onDown(MotionEvent e) {
-            mQuickActionView.prepare();
+            mQuickActionView.prepare(mTag);
             return false;
         }
 
@@ -61,6 +63,7 @@ public class QuickActionOnTouchListener implements View.OnTouchListener {
     public boolean onTouch(View v, MotionEvent event) {
         if (!mQuickActionView.isViewShown()) {
             mView = v;
+            mTag = v.getTag();
             return mGestureDetector.onTouchEvent(event);
         }
         return false;

@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
  */
 public interface QuickActionListener {
 
-    void onViewPrepare(FrameLayout container);
+    void onViewPrepare(FrameLayout container, Object tag);
 
     void onViewShown(FrameLayout container);
 
