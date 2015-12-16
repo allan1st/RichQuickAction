@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/rich_action_view_action"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    tools:layout_width="wrap_content">
+
+    <ImageView
+        android:id="@+id/rich_action_image_action"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="16dp"
+        tools:src="@android:drawable/sym_def_app_icon"/>
+
+</FrameLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.imallan.richquickaction.SampleActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/button"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"/>
+
+
+        <FrameLayout
+            android:id="@+id/button2"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+    <com.imallan.quickaction.RichActionView
+        android:id="@+id/view_rich_action"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#50000000"/>
+
+</FrameLayout>

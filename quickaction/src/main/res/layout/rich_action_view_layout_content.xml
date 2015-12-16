@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/rich_action_view_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="16dp"
+    android:background="@android:color/white"
+    android:elevation="4dp"
+    android:orientation="vertical"
+    android:visibility="invisible"
+    tools:ignore="UnusedAttribute"
+    tools:visibility="visible">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/rich_action_view_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_height="300dp"/>
+
+        <TextView
+            android:id="@+id/rich_action_text_view_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_margin="4dp"
+            android:alpha="0"
+            android:background="@android:color/darker_gray"
+            android:padding="4dp"
+            android:textColor="@android:color/white"
+            tools:text="Like"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/rich_action_view_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"/>
+
+</LinearLayout>
