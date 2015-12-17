@@ -2,6 +2,7 @@ package com.imallan.quickaction;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.util.AttributeSet;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
@@ -79,6 +80,15 @@ public class RichActionView extends FrameLayout implements QuickActionView {
     }
 
     public void prepare(Object tag) {
+        //set width
+        if (mLinearLayoutContainer.getContext().getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_LANDSCAPE) {
+            mLinearLayoutContainer.getLayoutParams().width = (int) (getWidth() / 2.5F);
+        } else {
+            mLinearLayoutContainer.getLayoutParams().width
+                    = LayoutParams.MATCH_PARENT;
+        }
+        mLinearLayoutContainer.requestLayout();
         if (mQuickActionListener != null) {
             mQuickActionListener.onViewPrepare(mFrameLayoutCustomContent, tag);
         }
