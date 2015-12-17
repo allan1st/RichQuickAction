@@ -8,7 +8,7 @@ public interface QuickActionView {
 
     void prepare(Object tag);
 
-    void show();
+    void show(Object tag);
 
     void hide();
 

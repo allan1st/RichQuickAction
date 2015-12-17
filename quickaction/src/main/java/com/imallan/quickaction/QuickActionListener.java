@@ -12,6 +12,6 @@ public interface QuickActionListener {
 
     void onViewShown(FrameLayout container);
 
-    void onActionSelected(Action action);
+    void onActionSelected(Action action, Object tag);
 
 }

@@ -45,7 +45,7 @@ public class QuickActionOnTouchListener implements View.OnTouchListener {
         @Override
         public void onLongPress(MotionEvent e) {
             mView.setPressed(false);
-            mQuickActionView.show();
+            mQuickActionView.show(mTag);
         }
 
         @Override

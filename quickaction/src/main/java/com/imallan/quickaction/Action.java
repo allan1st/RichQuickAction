@@ -14,17 +14,16 @@ public class Action {
 
     int mIconResId;
 
-    public Callback mCallback;
+    int mActionId;
 
-    public Action(Context context, String actionText, int iconResId, Callback callback) {
+    public Action(Context context, String actionText, int iconResId, int actionId) {
         mContext = context;
         mActionText = actionText;
         mIconResId = iconResId;
-        mCallback = callback;
+        mActionId = actionId;
     }
 
-    public interface Callback {
-        void call();
+    public int getActionId() {
+        return mActionId;
     }
-
 }

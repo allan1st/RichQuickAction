@@ -47,6 +47,8 @@ public class RichActionView extends FrameLayout implements QuickActionView {
 
     private TextView mTextViewActionLabel;
 
+    private Object mTag;
+
     public RichActionView(Context context) {
         super(context);
         init();
@@ -82,7 +84,8 @@ public class RichActionView extends FrameLayout implements QuickActionView {
         }
     }
 
-    public void show() {
+    public void show(Object tag) {
+        mTag = tag;
         isViewShown = true;
         mLinearLayoutContainer.setVisibility(VISIBLE);
         mLinearLayoutContainer.setScaleX(0.8F);
@@ -99,7 +102,7 @@ public class RichActionView extends FrameLayout implements QuickActionView {
     public void hide() {
         if (mActionSelected >= 0) {
             if (mQuickActionListener != null) {
-                mQuickActionListener.onActionSelected(mActionList.get(mActionSelected));
+                mQuickActionListener.onActionSelected(mActionList.get(mActionSelected), mTag);
             }
         }
         mLinearLayoutContainer.animate().setInterpolator(mInterpolator)

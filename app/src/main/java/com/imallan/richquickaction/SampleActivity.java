@@ -37,9 +37,9 @@ public class SampleActivity extends AppCompatActivity {
         mButton2 = findViewById(R.id.button2);
         final ImageView imageView = new ImageView(this);
         ArrayList<Action> actions = new ArrayList<>();
-        actions.add(new Action(this, "Action1", android.R.drawable.sym_def_app_icon, null));
-        actions.add(new Action(this, "Action2", android.R.drawable.sym_def_app_icon, null));
-        actions.add(new Action(this, "Action3", android.R.drawable.sym_def_app_icon, null));
+        actions.add(new Action(this, "Action1", android.R.drawable.sym_def_app_icon, 1));
+        actions.add(new Action(this, "Action2", android.R.drawable.sym_def_app_icon, 2));
+        actions.add(new Action(this, "Action3", android.R.drawable.sym_def_app_icon, 3));
         MyActionHolder holder1 = new MyActionHolder(actions, URL, imageView);
         MyActionHolder holder2 = new MyActionHolder(actions, URL2, imageView);
         holder1.bindRichActionView(mButton, mActionView);
@@ -102,9 +102,14 @@ public class SampleActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onActionSelected(Action action) {
-            if (action.mCallback != null) {
-                action.mCallback.call();
+        public void onActionSelected(Action action, Object tag) {
+            switch (action.getActionId()) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
             }
         }
     }
