@@ -5,6 +5,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.List;
+
 /**
  * Created by yilun
  * on 15/12/2015.
@@ -19,11 +21,13 @@ public class QuickActionOnTouchListener implements View.OnTouchListener {
 
     private Object mTag;
 
+    private List<Action> mActions;
+
     GestureDetector.OnGestureListener mOnGestureListener = new GestureDetector.OnGestureListener() {
 
         @Override
         public boolean onDown(MotionEvent e) {
-            mQuickActionView.prepare(mTag);
+            mQuickActionView.prepare(mTag, mActions);
             return false;
         }
 
@@ -64,6 +68,8 @@ public class QuickActionOnTouchListener implements View.OnTouchListener {
         if (!mQuickActionView.isViewShown()) {
             mView = v;
             mTag = v.getTag();
+            //noinspection unchecked
+            mActions = (List<Action>) v.getTag(R.id.rich_action_tag_actions);
             return mGestureDetector.onTouchEvent(event);
         }
         return false;

@@ -79,7 +79,7 @@ public class RichActionView extends FrameLayout implements QuickActionView {
         setAlpha(0F);
     }
 
-    public void prepare(Object tag) {
+    public void prepare(Object tag, List<Action> actions) {
         //set width
         if (mLinearLayoutContainer.getContext().getResources().getConfiguration().orientation
                 == Configuration.ORIENTATION_LANDSCAPE) {
@@ -90,7 +90,7 @@ public class RichActionView extends FrameLayout implements QuickActionView {
         }
         mLinearLayoutContainer.requestLayout();
         if (mQuickActionListener != null) {
-            mQuickActionListener.onViewPrepare(mFrameLayoutCustomContent, tag);
+            mQuickActionListener.onViewPrepare(mFrameLayoutCustomContent, tag, actions);
         }
     }
 

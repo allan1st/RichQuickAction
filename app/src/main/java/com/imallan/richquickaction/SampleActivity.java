@@ -15,8 +15,11 @@ import com.imallan.quickaction.RichActionHolder;
 import com.imallan.quickaction.RichActionView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SampleActivity extends AppCompatActivity {
+
+    private static final String TAG = "SampleActivity";
 
     private View mButton;
 
@@ -40,8 +43,12 @@ public class SampleActivity extends AppCompatActivity {
         actions.add(new Action(this, "Action1", android.R.drawable.sym_def_app_icon, 1));
         actions.add(new Action(this, "Action2", android.R.drawable.sym_def_app_icon, 2));
         actions.add(new Action(this, "Action3", android.R.drawable.sym_def_app_icon, 3));
+        ArrayList<Action> actions2 = new ArrayList<>();
+        actions2.add(new Action(this, "ActionA", android.R.drawable.sym_def_app_icon, 1));
+        actions2.add(new Action(this, "ActionB", android.R.drawable.sym_def_app_icon, 2));
+        actions2.add(new Action(this, "ActionC", android.R.drawable.sym_def_app_icon, 3));
         MyActionHolder holder1 = new MyActionHolder(actions, URL, imageView);
-        MyActionHolder holder2 = new MyActionHolder(actions, URL2, imageView);
+        MyActionHolder holder2 = new MyActionHolder(actions2, URL2, imageView);
         holder1.bindRichActionView(mButton, mActionView);
         holder2.bindRichActionView(mButton2, mActionView);
 
@@ -51,11 +58,11 @@ public class SampleActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean dispatchTouchEvent(MotionEvent ev) {
         if (mActionView.isViewShown()) {
-            mActionView.onTouchEvent(event);
+            mActionView.onTouchEvent(ev);
         }
-        return super.onTouchEvent(event);
+        return super.dispatchTouchEvent(ev);
     }
 
     class MyActionHolder extends RichActionHolder {
@@ -64,21 +71,27 @@ public class SampleActivity extends AppCompatActivity {
 
         final ImageView mImageView;
 
-        public MyActionHolder(ArrayList<Action> actions, String url, ImageView imageView) {
-            super(actions);
+        private final List<Action> mActions;
+
+        public MyActionHolder(List<Action> actions, String url, ImageView imageView) {
+            mActions = actions;
             mUrl = url;
             mImageView = imageView;
         }
 
-        @Override
         public void bindRichActionView(View view, RichActionView richActionView) {
             view.setTag(mUrl);
-            super.bindRichActionView(view, richActionView);
+            this.bindRichActionView(view, richActionView, mActions);
         }
 
         @Override
-        public void onViewPrepare(FrameLayout container, final Object tag) {
-            super.onViewPrepare(container, tag);
+        public void bindRichActionView(View view, RichActionView richActionView, List<Action> actions) {
+            super.bindRichActionView(view, richActionView, mActions);
+        }
+
+        @Override
+        public void onViewPrepare(FrameLayout container, final Object tag, List<Action> actions) {
+            super.onViewPrepare(container, tag, actions);
             container.removeAllViews();
             container.addView(mImageView,
                     FrameLayout.LayoutParams.MATCH_PARENT,

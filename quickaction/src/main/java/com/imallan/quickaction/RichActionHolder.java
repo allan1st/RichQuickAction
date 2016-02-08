@@ -3,7 +3,7 @@ package com.imallan.quickaction;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by yilun
@@ -13,15 +13,10 @@ public abstract class RichActionHolder implements QuickActionListener {
 
     private QuickActionOnTouchListener mQuickActionOnTouchListener;
 
-    private ArrayList<Action> mActions;
-
     private RichActionView mRichActionView;
 
-    public RichActionHolder(ArrayList<Action> actions) {
-        mActions = actions;
-    }
-
-    public void bindRichActionView(View view, RichActionView richActionView) {
+    public void bindRichActionView(View view, RichActionView richActionView, List<Action> actions) {
+        view.setTag(R.id.rich_action_tag_actions, actions);
         mRichActionView = richActionView;
         mQuickActionOnTouchListener = new QuickActionOnTouchListener(view.getContext(), mRichActionView);
         view.setOnTouchListener(mQuickActionOnTouchListener);
@@ -29,10 +24,10 @@ public abstract class RichActionHolder implements QuickActionListener {
     }
 
     @Override
-    public void onViewPrepare(FrameLayout container, Object tag) {
+    public void onViewPrepare(FrameLayout container, Object tag, List<Action> actions) {
         mRichActionView.clearActions();
-        if (mActions != null) {
-            for (Action action : mActions) {
+        if (actions != null) {
+            for (Action action : actions) {
                 mRichActionView.addAction(action);
             }
         }
